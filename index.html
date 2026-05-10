@@ -3,110 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Photo Collection</title>
+    <title>Welcome Home</title>
     <style>
-        /* General Styles */
-        body {
-            font-family: sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: #f4f4f9;
+        /* Modern Reset & Base Styles */
+        * {
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        h2 { color: #333; }
-
-        /* The Grid Layout */
-        .gallery-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            max-width: 1000px;
-            width: 100%;
-        }
-
-        .gallery-item {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.03);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
-        /* The Modal (Hidden by default) */
-        .modal {
-            display: none; 
-            position: fixed;
-            z-index: 1000;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
+        body {
+            background: linear-gradient(135deg, #1e1e2f 0%, #2d2d44 100%);
+            height: 100vh;
+            display: flex;
             justify-content: center;
             align-items: center;
+            color: white;
         }
 
-        .modal-content {
-            max-width: 90%;
-            max-height: 80%;
-            border-radius: 5px;
-            box-shadow: 0 0 20px rgba(255,255,255,0.2);
+        /* Container */
+        .hero-container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 600px;
         }
 
-        /* Close Button */
-        .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 35px;
-            color: #fff;
-            font-size: 40px;
-            font-weight: bold;
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #b0b0cc;
+            margin-bottom: 2.5rem;
+        }
+
+        /* Button Layout */
+        .btn-group {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
             cursor: pointer;
         }
 
-        .close-btn:hover { color: #bbb; }
+        /* Primary Button Style */
+        .btn-primary {
+            background-color: #6c5ce7;
+            color: white;
+            border: 2px solid #6c5ce7;
+        }
+
+        .btn-primary:hover {
+            background-color: #5b4bc4;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(108, 92, 231, 0.3);
+        }
+
+        /* Secondary Button Style */
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background-color: white;
+            color: #1e1e2f;
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Tweaks */
+        @media (max-width: 480px) {
+            h1 { font-size: 2.2rem; }
+            .btn { width: 100%; }
+        }
     </style>
 </head>
 <body>
 
-    <h2>My Photo Collection</h2>
-    <p>Click an image to view it full size.</p>
-
-    <div class="gallery-container">
-        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=500" class="gallery-item" alt="Landscape 1" onclick="openModal(this.src)">
-        <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=500" class="gallery-item" alt="Landscape 2" onclick="openModal(this.src)">
-        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=500" class="gallery-item" alt="Landscape 3" onclick="openModal(this.src)">
-        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=500" class="gallery-item" alt="Landscape 4" onclick="openModal(this.src)">
-        <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=500" class="gallery-item" alt="Landscape 5" onclick="openModal(this.src)">
-        <img src="https://images.unsplash.com/photo-1433086566780-60a83777ef1e?w=500" class="gallery-item" alt="Landscape 6" onclick="openModal(this.src)">
+    <div class="hero-container">
+        <h1>Welcome.</h1>
+        <p>This is your new digital home. Clean, professional, and ready for whatever you’re building next.</p>
+        
+        <div class="btn-group">
+            <a href="Thunderstorm_2026/th2026.html" class="btn btn-primary">Primary Action</a>
+            <a href="#" class="btn btn-secondary">Learn More</a>
+        </div>
     </div>
-
-    <div id="myModal" class="modal" onclick="closeModal()">
-        <span class="close-btn">&times;</span>
-        <img class="modal-content" id="imgFull">
-    </div>
-
-    <script>
-        // Function to open the modal and set the image
-        function openModal(src) {
-            document.getElementById("myModal").style.display = "flex";
-            document.getElementById("imgFull").src = src;
-        }
-
-        // Function to close the modal
-        function closeModal() {
-            document.getElementById("myModal").style.display = "none";
-        }
-    </script>
 
 </body>
 </html>
